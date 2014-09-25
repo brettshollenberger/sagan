@@ -15,6 +15,7 @@ gem 'devise'
 gem 'terminal-notifier-guard'
 
 group :development, :test do
+  gem 'database_cleaner'
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
   gem 'pry'

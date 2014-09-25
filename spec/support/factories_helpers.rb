@@ -1,20 +1,12 @@
 module FactoriesHelpers
   def curriculum_for_user(user)
-    @uwc = FactoryGirl.create(:curriculum, owner: user)
-    @uwc.collaboratable
-  end
-
-  def project_in_workspace(workspace)
-    @project = FactoryGirl.create(:project, 
-                                  title: "Workspaced Project",
-                                  workspace: workspace)
-
-    workspace.users.each do |user|
-      FactoryGirl.create(:user_project_collaboration, 
-                         collaborator: user,
-                         collaboratable: @project)
+    if user.curricula.empty?
+      @curriculum = FactoryGirl.create(:curriculum, owner: user)
+      FactoryGirl.create_list(:course_material, 10, parent_node: @curriculum)
+    else
+      @curriculum = user.curricula.first
     end
 
-    @project
+    return @curriculum
   end
 end
