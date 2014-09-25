@@ -19,8 +19,8 @@ module Api
     end
 
     def create
-      if params[:source_id] != nil
-        @curriculum = Curriculum.fork_from(Curriculum.find(params[:id]), params[:source_id])
+      if source_id != nil
+        @curriculum = Curriculum.fork_file(Curriculum.find(source_id), parent_id)
       else
         @curriculum = Curriculum.new(curriculum_params)
       end
@@ -63,6 +63,14 @@ module Api
     def curriculum_params
       params.require(:curriculum)
             .permit(:name, :filetype, :type, :classification, :parent_id, :owner_id, :source_id)
+    end
+
+    def source_id
+      params[:curriculum][:source_id] unless params[:curriculum].nil?
+    end
+
+    def parent_id
+      params[:curriculum][:parent_id] unless params[:curriculum].nil?
     end
   end
 end

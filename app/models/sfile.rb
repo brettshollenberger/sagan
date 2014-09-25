@@ -13,7 +13,8 @@ class Sfile < ActiveRecord::Base
   # Parent/child relationships
   has_many :child_nodes,
     :class_name => "Sfile",
-    :foreign_key => "parent_id"
+    :foreign_key => "parent_id",
+    :dependent => :destroy
 
   belongs_to :parent_node,
     :class_name => "Sfile",
@@ -36,6 +37,8 @@ class Sfile < ActiveRecord::Base
 
   def self.fork_file(file, new_parent)
     clone = file.attributes
+
+    clone["source_id"] = clone["id"]
     clone.delete("id")
 
     if new_parent.respond_to?(:id)
