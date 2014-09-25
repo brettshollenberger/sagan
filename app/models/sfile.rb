@@ -1,7 +1,13 @@
 class Sfile < ActiveRecord::Base
 
+  before_save :set_type
+
   def self.types
-    %w(curriculum course_material)
+    %w(Curriculum CourseMaterial)
+  end
+
+  def set_type
+    self.type = self.type.classify || "Sfile"
   end
 
   # Parent/child relationships
@@ -24,6 +30,25 @@ class Sfile < ActiveRecord::Base
 
   validates :type, :presence => true, :inclusion => { :in => types }
 
-  # def fork_file
-  # end
+  def self.fork_file(file, new_parent)
+    clone = file.attributes
+    clone.delete("id")
+
+    if new_parent.respond_to?(:id)
+      clone["parent_id"] = new_parent.id
+    else
+      clone["parent_id"] = new_parent.to_i
+    end
+
+    new_file = Sfile.create(clone)
+
+    # Recurse
+    if file.child_nodes.length > 0
+      file.child_nodes.each do |child|
+        Sfile.fork_file(child, new_file)
+      end
+    end
+
+    new_file
+  end
 end

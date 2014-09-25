@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :sfile do
     name "Javascript the Good Parts"
     filetype "txt"
-    type "course_material"
+    type "CourseMaterial"
     classification "reading"
     parent_id nil
     source_id nil
