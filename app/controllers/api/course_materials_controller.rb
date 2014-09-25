@@ -3,7 +3,7 @@ module Api
     skip_before_filter :verify_authenticity_token
 
     def self.queryable_keys
-      [:owner_id, :source_id]
+      [:owner_id, :source_id, :parent_id]
     end
 
     def index
@@ -55,7 +55,7 @@ module Api
   private
     def queryable_keys
       params.inject({}) do |result, (key, value)|
-        result[key] = value if CurriculaController.queryable_keys.include? key.to_sym
+        result[key] = value if CourseMaterialsController.queryable_keys.include? key.to_sym
         result
       end
     end
