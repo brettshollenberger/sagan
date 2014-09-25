@@ -28,6 +28,10 @@ class Sfile < ActiveRecord::Base
     :class_name => "Sfile",
     :foreign_key => "source_id"
 
+  belongs_to :owner,
+    :class_name => "User",
+    :foreign_key => :owner_id
+
   validates :type, :presence => true, :inclusion => { :in => types }
 
   def self.fork_file(file, new_parent)

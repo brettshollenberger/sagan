@@ -1,3 +1,5 @@
+include Warden::Test::Helpers
+
 module Requests
   module JsonHelpers
     def user

@@ -16,4 +16,11 @@ RSpec.describe Curriculum, :type => :model do
   it "is always classification curriculum" do
     expect(@curriculum.classification).to eq "curriculum"
   end
+
+  it "can belong to a user" do
+    @user = FactoryGirl.create(:user)
+    @curriculum.owner = @user
+    @curriculum.save
+    expect(@user.curricula).to include @curriculum
+  end
 end
