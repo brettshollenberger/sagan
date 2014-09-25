@@ -32,17 +32,19 @@ RSpec.describe Sfile, :type => :model do
   end
 
   describe "Valid types" do
-    it "is valid with one of the valid types" do
-      @sub_file.type = "Curriculum"
-      expect(@sub_file).to be_valid
+    describe "Types" do
+      it "is valid with one of the valid types" do
+        @sub_file.type = "Curriculum"
+        expect(@sub_file).to be_valid
 
-      @sub_file.type = "CourseMaterial"
-      expect(@sub_file).to be_valid
-    end
+        @sub_file.type = "CourseMaterial"
+        expect(@sub_file).to be_valid
+      end
 
-    it "is invalid with some other type" do
-      @sub_file.type = "SomethingRandom"
-      expect(@sub_file).to_not be_valid
+      it "is invalid with some other type" do
+        @sub_file.type = "SomethingRandom"
+        expect(@sub_file).to_not be_valid
+      end
     end
   end
 
