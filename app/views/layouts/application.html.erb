@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ngRails</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+  <meta content="<%= Rails.application.secrets.one_api_key %>" name="api-key" />
+</head>
+<body ng-app="ngRails">
+	<div class="row">
+		<div class="large-12 columns">
+			<p class="notice"><%= notice %></p>
+			<p class="alert"><%= alert %></p>
+			<%= yield %>
+		</div>
+	</div>
+
+  
+
+</body>
+</html>
