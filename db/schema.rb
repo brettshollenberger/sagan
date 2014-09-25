@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20140925200721) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "siles", force: true do |t|
+  create_table "sfiles", force: true do |t|
     t.string   "name"
     t.string   "filetype"
     t.string   "type"

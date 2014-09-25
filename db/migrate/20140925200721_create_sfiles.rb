@@ -1,6 +1,6 @@
 class CreateSfiles < ActiveRecord::Migration
   def change
-    create_table :siles do |t|
+    create_table :sfiles do |t|
       t.string :name
       t.string :filetype
       t.string :type
