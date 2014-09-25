@@ -28,4 +28,29 @@ RSpec.describe Sfile, :type => :model do
       expect(directory.forks).to_not include sub_file
     end
   end
+
+  describe "Valid types" do
+    it "is valid with one of the valid types" do
+      sub_file.type = "curriculum"
+      expect(sub_file).to be_valid
+
+      sub_file.type = "course_material"
+      expect(sub_file).to be_valid
+    end
+
+    it "is invalid with some other type" do
+      sub_file.type = "something_random"
+      expect(sub_file).to_not be_valid
+    end
+  end
+
+  # describe "Forking a file" do
+  #   before(:each) do
+  #     @fork = directory.fork_file
+  #   end
+
+  #   it "it adds the file and its children to a new source" do
+  #     expect(@fork.child_nodes.length).to eq 1
+  #   end
+  # end
 end
