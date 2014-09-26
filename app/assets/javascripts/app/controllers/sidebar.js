@@ -3,10 +3,10 @@ angular
   .controller('SidebarCtrl', ['$scope', 'Curriculum', 'User', 'CourseMaterial', 'AppService',
   function($scope, Curriculum, User, CourseMaterial, AppService) {
 
-  	$scope.user = User.find("me");
-  	console.log($scope.user);
-
-    $scope.curricula = Curriculum.findAll();
+  	$scope.user = User.find("me").then(function(){
+  		$scope.curricula = Curriculum.where({ owner_id: $scope.user.id });
+  		$scope.currentCurriculum = AppService.setCurriculum($scope.curricula.first());
+  	});
 
     $scope.currentCurriculum = AppService.getCurriculum();
 
