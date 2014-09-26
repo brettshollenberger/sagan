@@ -1,10 +1,10 @@
 <div  ng-show="file.filetype == 'directory'" class="file-item file-directory">
 	<img width="15" src="images/file.svg" alt="">
-	<span ng-click="appendSource({childNode: file})" class="file-title">{{file.name}}</span>
-	<span class="right"><img ng-click="forkItem(file)" width="15" src="images/plus.svg" alt=""></span>
+	<span class="file-title">{{file.name}}</span>
+	<span class="right"><img ng-click="forkItem()" width="15" src="images/plus.svg" alt=""></span>
 </div>
 <div ng-hide="file.filetype == 'directory'" class="file-item file-single">
 	<img width="15" src="images/folder.svg" alt="">
 	<span ng-click="appendSource(file)" class="file-title">{{file.name}}</span>
-	<span class="right"><img ng-click="onClick()" width="15" src="images/plus.svg" alt=""></span>
+	<span class="right"><img ng-click="forkItem()" width="15" src="images/plus.svg" alt=""></span>
 </div>

@@ -1,5 +1,13 @@
  
-<h5 class="content-title">My Courses <img src="images/plus.svg" width="15" class="right"></img></h5>
- <div ng-repeat="curriculum in curricula">
+<h5 class="content-title">My Courses <img ng-click="toggleAdding()" src="images/plus.svg" width="15" class="right"></img></h5>
+
+ <div class="curricula-items" ng-repeat="curriculum in curricula">
    <a  href="#curricula/{{curriculum.id}}" ng-class="{ 'selected': currentCurriculum.id == curriculum.id }">{{curriculum.name}}</a></div>
  </div>
+
+<div class="add-curriculum" ng-show="isAdding">
+	<input placeholder="Enter Curriculum Name" type="text" ng-model="newCurriculum.name">
+	<img src="images/check.svg" width="15" ng-click="createCurriculum()">
+</div>
+
+<h5 class="content-title"><a href="#/discover">Explore Courses</a></h5>

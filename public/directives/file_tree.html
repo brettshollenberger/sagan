@@ -18,7 +18,20 @@
       <div class="file-header">
         {{source.name}}
       </div>
-      <div ng-repeat="childNode in source.course_materials" file-in-tree="childNode" appendSource="appendSource(childNode)" forkItem="forkItem(childNode)"></div>
+
+      
+      <div ng-repeat="childNode in source.course_materials">
+        <div  ng-show="childNode.filetype == 'directory'" class="file-item file-directory">
+          <img width="15" src="images/file.svg" alt="">
+          <span class="file-title">{{childNode.name}}</span>
+          <span class="right"><img ng-click="forkItem(childNode)" width="15" src="images/plus.svg" alt=""></span>
+        </div>
+        <div ng-hide="childNode.filetype == 'directory'" class="file-item file-single">
+          <img width="15" src="images/folder.svg" alt="">
+          <span ng-click="appendSource(childNode)" class="file-title">{{childNode.name}}</span>
+          <span class="right"><img ng-click="forkItem(childNode)" width="15" src="images/plus.svg" alt=""></span>
+        </div>
+      </div>
       <div class="file-footer"></div>
     </div>
     <div class="file-fork">

@@ -1,15 +1,17 @@
 angular
 	.module('ngRails')
-	.directive('fileInTree', ['CurrentUser', function(CurrentUser) {
+	.directive('fileInTree', ['forkService', function(forkService) {
 		return {
 			scope: {
 		        file: '=fileInTree',
-		        appendChild: '&',
-		        forkItem: '&'
+		        appendChild: '&'
 		      },
 			templateUrl: 'directives/file_in_tree.html',
 			link: function(scope, el, attrs) {
-
+				scope.forkItem = function() {
+					var derp = forkService.createFork(scope.file);
+					console.log(derp);
+				}
 			}
 		}
 	}]);

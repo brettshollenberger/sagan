@@ -13,9 +13,9 @@
   <div class="left-content" ng-controller="SidebarCtrl">
     <div class="info-content">
       <h3 class="sagan-title">Sagan</h3>
-      <div class="page-title" ng-show="currentCurriculum">
+      <div class="page-title" ng-show="!!currentCurriculum">
       	<h3>{{currentCurriculum.name}}</h3> 
-        <p>By {{currentCurriculum.owner.full_name}}</p>
+        <p ng-show="currentCurriculum.full_name">By {{currentCurriculum.owner.full_name}}</p>
       </div>
     </div>
 

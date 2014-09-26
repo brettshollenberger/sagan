@@ -1,17 +1,20 @@
 angular
   .module('ngRails')
-  .directive('fileTree', ['ARMixin', 'ARFunctional.Collection', 'CurrentCurriculum', function(mixin, FunctionalCollection, CurrentCurriculum) {
+  .directive('fileTree', ['ARMixin', 'ARFunctional.Collection', 'CurrentCurriculum', 'forkService', function(mixin, FunctionalCollection, CurrentCurriculum, forkService) {
     return {
       scope: {
         source: "="
       },
       templateUrl: 'directives/file_tree.html',
+      controller: function($scope, $element) {
+        console.log($scope.appendSource);
+      },
       link: function(scope, element, attributes) {
         scope.breadcrumbs = mixin([scope.source], FunctionalCollection);
         CurrentCurriculum.setCurriculum(scope.breadcrumbs[0]);
 
-        scope.forkItem = function(item) {
-          console.log(item);
+        scope.forkItem = function(childNode) {
+          forkService.createFork(childNode);
         }
 
         scope.appendSource = function(newSource) {

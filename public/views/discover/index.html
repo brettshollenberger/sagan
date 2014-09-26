@@ -1,0 +1,14 @@
+<div class="history-bar">
+	<h6>Explore</h6>
+</div>
+<div class="file-container">
+	<div class="file-viewer">
+		<div class="file-item file-directory" ng-repeat="curriculum in curricula">
+			<a href="#/curricula/{{curriculum.id}}" style="display:block">
+				<img src="images/file.svg" width=20 alt="">
+				<span class="file-title">{{ curriculum.name }}</span>
+			</a>
+		</div>
+		
+	</div>
+</div>

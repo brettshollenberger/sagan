@@ -33,6 +33,19 @@
       return this.curriculum;
     }
 
+    CourseMaterial.prototype.$fork = function() {
+      var parent_course_material_clone = _.cloneDeep(this);
+      var source_id = parent_course_material_clone.id;
+
+      delete parent_curriculum_clone.id;
+
+      var child_course_material = CourseMaterial.new(_.defaults({
+        source_id: source_id
+      }, parent_course_material_clone));
+
+      return child_course_material.$save();
+    }
+
     CourseMaterial.validates({
       name:           { required: true },
       filetype:       { required: true, 
