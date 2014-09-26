@@ -1,3 +1,12 @@
 @-webkit-keyframes popUp {
-
+	from {
+		-webkit-transform: translate(0px, 25px);
+		transform: translate(0px, 25px);
+		opacity:0;
+	}
+	to {
+		-webkit-transform: translate(0px, 0px);
+		transform: translate(0px, 0px);
+		opacity:1;
+	}
 }

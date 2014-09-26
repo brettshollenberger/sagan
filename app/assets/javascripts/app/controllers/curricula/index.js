@@ -7,10 +7,4 @@ angular
       $scope.curriculum.course_materials.findAll();
     });
 
-    $scope.$watch('curriculum', function(newValue) {
-      CurrentCurriculum.setCurriculum(newValue);
-    });
-
-
-
   }]);

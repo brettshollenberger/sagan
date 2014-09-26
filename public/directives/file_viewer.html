@@ -1,16 +1,29 @@
-<button ng-click="file.$save()" ng-show="file.dirty('content')">Save</button>
+<div ng-cloak class="file-view">
+	
+	<div class="errors">
+		<div ng-repeat="(key, error_list) in file.$errors">
+		  {{key}}
+		  <div ng-repeat="error in error_list">
+		    {{error}}
+		  </div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="large-12 columns"><label for=""> Name
+		<input type="text" ng-model="file.name"></label></div>
+	</div>
+	<div class="row">
+		<div class="large-12 columns"><label for="">Material Type
+		<select ng-model="file.classification" ng-options="value for value in classifications"></select></label></div>
+	</div>
+	<div class="row">
+		<div class="large-12 columns"><label for="">Content
+		<textarea ng-model="file.content">{{file.content}}</textarea></label></div>
+	</div>
 
-<div ng-repeat="(key, error_list) in file.$errors">
-  {{key}}
-  <div ng-repeat="error in error_list">
-    {{error}}
-  </div>
+	<div class="save-button">
+		<button ng-click="file.$save()" ng-show="file.dirty('content')">Save</button>
+	</div>
 </div>
 
-<h6>Name</h6>
-<input ng-model="file.name">
-
-<h6>Type</h6>
-<select ng-model="file.classification" ng-options="value for value in classifications"></select>
-
-<textarea ng-model="file.content">{{file.content}}</textarea>

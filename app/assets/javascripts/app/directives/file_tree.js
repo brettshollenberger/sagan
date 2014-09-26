@@ -1,6 +1,6 @@
 angular
   .module('ngRails')
-  .directive('fileTree', ['ARMixin', 'ARFunctional.Collection', function(mixin, FunctionalCollection) {
+  .directive('fileTree', ['ARMixin', 'ARFunctional.Collection', 'CurrentCurriculum', function(mixin, FunctionalCollection, CurrentCurriculum) {
     return {
       scope: {
         source: "="
@@ -8,11 +8,17 @@ angular
       templateUrl: 'directives/file_tree.html',
       link: function(scope, element, attributes) {
         scope.breadcrumbs = mixin([scope.source], FunctionalCollection);
+        CurrentCurriculum.setCurriculum(scope.breadcrumbs[0]);
+
+        scope.forkItem = function(item) {
+          console.log(item);
+        }
 
         scope.appendSource = function(newSource) {
           scope.source = newSource;
           scope.source.course_materials.findAll();
           scope.breadcrumbs.push(newSource);
+          CurrentCurriculum.setCurriculum(scope.breadcrumbs[0]);
         }
 
         scope.navigateTo = function(newSource) {
@@ -27,6 +33,7 @@ angular
 
           scope.source = newSource;
           scope.breadcrumbs.push(newSource);
+          CurrentCurriculum.setCurriculum(scope.breadcrumbs[0]);
         }
       }
     }

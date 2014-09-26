@@ -1,4 +1,4 @@
-<div>
+<div ng-cloak>
   <div class="history-bar">
     <div class="breadcrumb" ng-repeat="crumb in breadcrumbs">
       <h6 class="breadcrumb" ng-click="navigateTo(crumb)">
@@ -6,20 +6,23 @@
         <div class="breadcrumb" ng-hide="$last"> > </div>
       </h6>
     </div>
-    <a href="#files/{{source.id}}/course_materials/new"><button style="float:right;">Add Course Material</button></a>
+    <a class="add-new" href="#files/{{source.id}}/course_materials/new">+ Add Course Material</a>
   </div>
 
   <div ng-show="source.course_materials.empty()">
     <div file-viewer="source"></div>
   </div>
 
-  <div ng-hide="source.course_materials.empty()" class="file-viewer">
-    <div class="file-header">
-      {{source.name}}
+  <div class="file-container" ng-hide="source.course_materials.empty()">
+    <div class="file-viewer">
+      <div class="file-header">
+        {{source.name}}
+      </div>
+      <div ng-repeat="childNode in source.course_materials" file-in-tree="childNode" appendSource="appendSource(childNode)" forkItem="forkItem(childNode)"></div>
+      <div class="file-footer"></div>
     </div>
-    <div ng-repeat="childNode in source.course_materials" file-in-tree="childNode" ng-click="appendSource(childNode)"></div>
-    <div class="file-footer"></div>
+    <div class="file-fork">
+      
+    </div>
   </div>
-
-  
 </div>
