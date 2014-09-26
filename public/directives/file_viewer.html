@@ -1,3 +1,16 @@
 <button ng-click="file.$save()" ng-show="file.dirty('content')">Save</button>
 
+<div ng-repeat="(key, error_list) in file.$errors">
+  {{key}}
+  <div ng-repeat="error in error_list">
+    {{error}}
+  </div>
+</div>
+
+<h6>Name</h6>
+<input ng-model="file.name">
+
+<h6>Type</h6>
+<select ng-model="file.classification" ng-options="value for value in classifications"></select>
+
 <textarea ng-model="file.content">{{file.content}}</textarea>

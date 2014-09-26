@@ -5,6 +5,9 @@ angular
 			scope: {
         file: '=fileViewer'
       },
-			templateUrl: 'directives/file_viewer.html'
+			templateUrl: 'directives/file_viewer.html',
+      link: function(scope) {
+        scope.classifications = ['assignment', 'quiz', 'reading'];
+      }
 		}
 	}]);

@@ -15,6 +15,11 @@ angular
         controller: 'AppCtrl'
       })
 
+      .when('/files/:id/course_materials/new', {
+        templateUrl: 'views/course_materials/new.html',
+        controller: 'CourseMaterialsNewCtrl'
+      })
+
       .otherwise({
         redirectTo: '/'
       });
