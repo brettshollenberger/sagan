@@ -20,7 +20,7 @@ module Api
 
     def create
       if source_id != nil
-        @course_material = CourseMaterial.fork_file(CourseMaterial.find(source_id), parent_id)
+        @course_material = CourseMaterial.fork_file(Sfile.find(source_id), parent_id)
       else
         @course_material = current_user.course_materials.new(course_material_params)
       end
@@ -42,15 +42,15 @@ module Api
       end
     end
 
-    # def destroy
-    #   @curriculum = current_user.curricula.find(params[:id])
+    def destroy
+      @course_material = current_user.course_materials.find(params[:id])
 
-    #   if @curriculum && @curriculum.destroy
-    #     render deleted
-    #   else
-    #     render not_permitted
-    #   end
-    # end
+      if @course_material && @course_material.destroy
+        render deleted
+      else
+        render not_permitted
+      end
+    end
 
   private
     def queryable_keys
@@ -66,11 +66,11 @@ module Api
     end
 
     def source_id
-      params[:curriculum][:source_id] unless params[:curriculum].nil?
+      params[:course_material][:source_id] unless params[:course_material].nil?
     end
 
     def parent_id
-      params[:curriculum][:parent_id] unless params[:curriculum].nil?
+      params[:course_material][:parent_id] unless params[:course_material].nil?
     end
   end
 end
