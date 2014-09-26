@@ -1,12 +1,10 @@
 angular
   .module('ngRails')
-  .controller('CurriculaIndexCtrl', ['$scope', '$rootScope',
-  function($scope, $rootScope) {
+  .controller('CurriculaIndexCtrl', ['$scope', '$routeParams', 'Curriculum', 
+  function($scope, $routeParams, Curriculum) {
 
-    $rootScope.$watch('currentContent', function() {
-      if (!_.isUndefined($rootScope.currentContent)) {
-        $rootScope.currentContent.course_materials.findAll();
-      }
+    $scope.curriculum = Curriculum.find($routeParams.id).then(function() {
+      $scope.curriculum.course_materials.findAll();
     });
 
   }]);
