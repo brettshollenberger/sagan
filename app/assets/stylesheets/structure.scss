@@ -1,0 +1,63 @@
+@import "constants";
+
+html, body {
+	width:100%;
+	height:100%;
+	background-color:$lightGray;
+}
+
+.info-content {
+	width:240px;
+	height:250px;
+	@include blueGradient();
+	.sagan-title {
+		padding:30px;
+		margin:0;
+		padding:0px 15px;
+		line-height:60px;
+		background:rgba(0,0,0,0.2);
+		color:white;
+		text-align: center;
+	}
+	.page-title {
+		padding:30px;
+
+	}
+	
+}
+
+.content-navigation {
+	padding:30px;
+	p {
+		color:white;
+	}
+	h6 {
+		color:$mediumGray;
+		text-transform:uppercase;
+	}
+}
+
+.content-container {
+	max-width:100%;
+	height:100%;
+
+	.right-content {
+		padding:0px 30px 30px 270px;
+		height:100%;
+		width:100%;
+	}
+	.left-content {
+		position:fixed;
+		width:240px;
+		height: 100%;
+		background-color:$darkGray;
+	}
+	.history-bar {
+		border-bottom:1px solid $mediumGray;
+		h6 {
+			display:inline-block;
+			line-height:60px;
+			margin:0px;
+		}
+	}
+}

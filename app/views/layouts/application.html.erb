@@ -1,22 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ngRails</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-  <meta content="<%= Rails.application.secrets.one_api_key %>" name="api-key" />
+	<title>ngRails</title>
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Lato:700' rel='stylesheet' type='text/css'>
+	<%= stylesheet_link_tag    'application', media: 'all' %>
+	<%= javascript_include_tag 'application' %>
+	<%= csrf_meta_tags %>
+	<meta content="<%= Rails.application.secrets.one_api_key %>" name="api-key" />
 </head>
 <body ng-app="ngRails">
-	<div class="row">
-		<div class="large-12 columns">
-			<p class="notice"><%= notice %></p>
-			<p class="alert"><%= alert %></p>
+	<div class="row content-container">
+		<div class="left-content" ng-controller="SidebarCtrl">
+			<div class="info-content">
+				<h1 class="sagan-title">Sagan</h1>
+				<div class="page-title">
+					
+				</div>
+			</div>
+			<div class="content-navigation">
+				<h6>MY COURSES</h6>
+				<p ng-repeat="curriculum in curricula" ng-click="setCurriculum(curriculum.id)">{{curriculum.name}}</p>
+
+			</div>
+			
+		</div>
+		<div class="right-content">
+			<p class="notice hide"><%= notice %></p>
+			<p class="alert hide"><%= alert %></p>
+			<div class="history-bar">
+				<h6>{{curriculum}}</h6>
+			</div>
 			<%= yield %>
 		</div>
 	</div>
-
-  
-
 </body>
 </html>

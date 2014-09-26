@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: sagan_development
+
+test:
+  <<: *default
+  database: sagan_test
+
+production:
+  <<: *default
+  database: sagan_production
+  username: sagan
+  password: <%= ENV['SAGAN_DATABASE_PASSWORD'] %>
