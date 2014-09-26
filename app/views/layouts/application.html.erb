@@ -18,9 +18,8 @@
 				</div>
 			</div>
 			<div class="content-navigation">
-				<h6>My Courses</h6>
-				<p ng-repeat="curriculum in curricula" ng-click="setRootItem(curriculum)">{{curriculum.name}}</p>
-
+				<h6>{{$root.currentCurriculum.name || "My Courses"}}</h6>
+				<p ng-repeat="course_material in $root.currentCurriculum.course_materials | filter:'directory'" ng-click="setRootItem(course_material)">{{course_material.name}}</p>
 			</div>
 			
 		</div>

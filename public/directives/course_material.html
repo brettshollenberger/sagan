@@ -1,7 +1,10 @@
 <div>
 	<div class="fork-material">
-      <div class="icon"></div>
+      <div ng-click="toggleFork()" class="icon"></div>
     </div>
     <h3 ng-click="setParent(file.id)">{{file.name}}</h3>
-    <p >{{file.content}}</p>	
+    <p>{{file.content}}</p>
+    <div class="fork-menu">
+    	<h1></h1>
+    </div>	
 </div>
