@@ -1,37 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>ngRails</title>
-	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Lato:700' rel='stylesheet' type='text/css'>
-	<%= stylesheet_link_tag    'application', media: 'all' %>
-	<%= javascript_include_tag 'application' %>
-	<%= csrf_meta_tags %>
-	<meta content="<%= Rails.application.secrets.one_api_key %>" name="api-key" />
+<title>ngRails</title>
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Lato:700' rel='stylesheet' type='text/css'>
+<%= stylesheet_link_tag    'application', media: 'all' %>
+<%= javascript_include_tag 'application' %>
+<%= csrf_meta_tags %>
+<meta content="<%= Rails.application.secrets.one_api_key %>" name="api-key" />
 </head>
 <body ng-app="ngRails">
-	<div class="row content-container">
-		<div class="left-content" ng-controller="SidebarCtrl">
-			<div class="info-content">
-				<h3 class="sagan-title">Sagan</h3>
-				<div class="page-title">
-					
-				</div>
-			</div>
-			<div class="content-navigation">
-				<h6>My Courses</h6>
-				<p ng-repeat="curriculum in curricula" ng-click="setRootItem(curriculum)">{{curriculum.name}}</p>
+<div class="row content-container" ng-controller="AppCtrl">
+  <div class="left-content" ng-controller="SidebarCtrl">
+    <div class="info-content">
+      <h3 class="sagan-title">Sagan</h3>
+      <div class="page-title">
 
-			</div>
-			
-		</div>
-		<div class="right-content">
-			<p class="notice hide"><%= notice %></p>
-			<p class="alert hide"><%= alert %></p>
-			<div class="history-bar">
-				<h6>Cookies</h6>
-			</div>
-			<%= yield %>
-		</div>
-	</div>
+      </div>
+    </div>
+    <div class="content-navigation">
+      <h6>My Courses</h6>
+      <p ng-repeat="curriculum in curricula" ng-click="setRoot(curriculum); setContent(curriculum)">
+        {{curriculum.name}}
+      </p>
+
+    </div>
+
+  </div>
+  <div class="right-content">
+    <p class="notice hide"><%= notice %></p>
+    <p class="alert hide"><%= alert %></p>
+    <div class="history-bar">
+      <div class="breadcrumb" ng-repeat="crumb in breadcrumbs">
+        <h6 class="breadcrumb" ng-click="navigateTo(crumb)">
+          {{crumb.name}}
+          <div class="breadcrumb" ng-hide="$last"> > </div>
+        </h6>
+      </div>
+    </div>
+    <%= yield %>
+  </div>
+</div>
 </body>
 </html>

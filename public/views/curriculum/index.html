@@ -1,6 +1,11 @@
-<div  ng-show="!$root.currentCurriculum.course_materials.empty()">
+<div ng-controller="CurriculaIndexCtrl">
+  <div ng-hide="currentContent.course_materials.empty()">
+    <div class="course-material" ng-repeat="file in currentContent.course_materials">
+      <div course-material="file"></div>
+    </div>
+  </div>
 
-  <div class="course-material" ng-repeat="file in $root.currentCurriculum.course_materials">
-    <div course-material="file"></div>
+  <div ng-show="currentContent.course_materials.empty()">
+    <div class="content">{{currentContent.content}}</div>
   </div>
 </div>
