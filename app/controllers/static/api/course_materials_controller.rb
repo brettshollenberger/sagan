@@ -2,9 +2,10 @@ module Static
   module Api
     class CourseMaterialsController < ApplicationController
       CourseMaterials = Struct.new(:id, :name, :filetype, :classification,
-                                   :parent_id, :url)
+                                   :parent_id, :url, :content)
 
       def index
+        binding.pry
         @course_materials = database.map    { |c| CourseMaterials.new(*c) }
                                     .select { |c| c.parent_id == params[:parent_id].to_i }
       end
@@ -16,10 +17,13 @@ module Static
     private
       def database
         [
-          [4, "The Satanic Verses", "txt", "reading", 1, "satan.com"],
-          [5, "Quizzes", "directory", "directory", 1, "localhost:3000/static/api/course_materials/5"],
-          [6, "Quiz 1", "txt", "quiz", 5, "localhost:3000/static/api/course_materials/6"],
-          [7, "Quiz 2", "txt", "quiz", 5, "localhost:3000/static/api/course_materials/7"]
+          [4, "The Satanic Verses", "txt", "reading", 1, "satan.com",
+           "I am Salman Rushdie and I'm a mad pimp."],
+          [5, "Quizzes", "directory", "directory", 1, "localhost:3000/static/api/course_materials/5", ""],
+          [6, "Quiz 1", "txt", "quiz", 5, "localhost:3000/static/api/course_materials/6",
+           "Blood money"],
+          [7, "Quiz 2", "txt", "quiz", 5, "localhost:3000/static/api/course_materials/7",
+          "Hipster ipsum yolo sit amet"]
         ]
       end
 
