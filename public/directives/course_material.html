@@ -1,10 +1,18 @@
-<div ng-click="setContent(file)">
-	<div class="fork-material">
-    <div ng-click="toggleFork()" class="icon"></div>
-  </div>
-  <h3>{{file.name}}</h3>
-  <p>{{file.content}}</p>
-  <div class="fork-menu">
-    <h1></h1>
-  </div>	
+<div class="relative">
+	<div class="material-content">
+		<div ng-click="setContent(file)" class="material-content-trigger">
+			
+			<h3>{{file.name}}</h3>
+			<p>{{file.content}}</p>
+		</div>
+		<div class="fork-material">
+			<div ng-click="toggleFork()" class="icon">
+				<img src="plus.svg" alt="">
+			</div>
+		</div>
+	</div>
+	<div class="fork-menu">
+		<h6>FORK THIS MATERIAL</h6>
+		<div forker="file"></div>
+	</div>	
 </div>
