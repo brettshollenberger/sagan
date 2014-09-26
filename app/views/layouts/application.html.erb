@@ -26,13 +26,28 @@
           ^ up
         </div>
         <h6>{{currentContent.name || "My Courses"}}</h6>
-      </div>
 
-      <div>
-        <p ng-repeat="course_material in currentContent.course_materials" 
-        ng-click="setContent(course_material)">
-          {{course_material.name}}
-        </p>
+        <div ng-show="currentContent.classification == 'curriculum'">
+          <div ng-repeat="curriculum in curricula">
+            <p ng-click="navigateTo(curriculum)">
+            {{curriculum.name}}
+            <div ng-show="curriculum == currentContent">
+              <p class="submenu" ng-repeat="course_material in currentContent.course_materials | directories"
+              ng-click="setContent(course_material)">
+              >> {{course_material.name}}
+              </p>
+            </div>
+            </p>
+          </div>
+        </div>
+
+        <div ng-hide="currentContent.classification == 'curriculum'">
+          <div ng-repeat="course_material in currentContent.course_materials">
+            <p ng-click="setContent(course_material)">
+            {{course_material.name}}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

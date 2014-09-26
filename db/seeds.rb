@@ -23,6 +23,18 @@ puts "Creating curricula"
                                   :filetype => "directory",
                                   :classification => "directory")
 
+@required = CourseMaterial.create(:name => "Required Reading",
+                                  :parent_id => @readings.id,
+                                  :owner_id => @user.id,
+                                  :filetype => "directory",
+                                  :classification => "directory")
+
+@extra_credit = CourseMaterial.create(:name => "Extra Credit",
+                                  :parent_id => @readings.id,
+                                  :owner_id => @user.id,
+                                  :filetype => "directory",
+                                  :classification => "directory")
+
 @quizzes = CourseMaterial.create(:name => "Quizzes",
                                  :parent_id => @curriculum.id,
                                  :owner_id => @user.id,
@@ -30,14 +42,14 @@ puts "Creating curricula"
                                  :classification => "directory")
 
 @reading1 = CourseMaterial.create(:name => "Javascript the Definitive Guide",
-                                  :parent_id => @readings.id,
+                                  :parent_id => @extra_credit.id,
                                   :owner_id => @user.id,
                                   :content => "It was the best of Javascript, it was the worst of Javascript",
                                   :filetype => "md",
                                   :classification => "reading")
 
 @reading2 = CourseMaterial.create(:name => "Javascript the Good Parts",
-                                  :parent_id => @readings.id,
+                                  :parent_id => @required.id,
                                   :owner_id => @user.id,
                                   :content => "This book is intentionally left blank",
                                   :filetype => "md",

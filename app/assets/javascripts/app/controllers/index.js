@@ -6,9 +6,9 @@ angular
 
     $scope.current_user = User.find("me").then(function() {
       $scope.curricula = Curriculum.where({owner_id: $scope.current_user.id}).then(function() {
-        $rootScope.currentRoot = $scope.curricula.first();
-        $rootScope.currentContent = $scope.currentRoot;
-        $rootScope.breadcrumbs = mixin([$rootScope.currentRoot], FunctionalCollection);
+        $rootScope.currentRoot    = $scope.curricula;
+        $rootScope.currentContent = $scope.curricula.first();
+        $rootScope.breadcrumbs    = mixin([$rootScope.currentContent], FunctionalCollection);
 
         $scope.setContent = function(newContent) {
           var oldContent = $rootScope.currentContent;
