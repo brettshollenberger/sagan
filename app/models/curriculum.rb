@@ -11,4 +11,8 @@ class Curriculum < Sfile
     "curriculum"
   end
 
+  has_many :course_materials,
+    :foreign_key => "parent_id",
+    :dependent => :destroy
+
 end

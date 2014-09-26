@@ -9,10 +9,11 @@ class User < ActiveRecord::Base
     foreign_key: :owner_id
 
   has_many :curricula,
+    inverse_of: :owner,
     foreign_key: :owner_id do
 
     def fork_file(file, new_parent)
-      Curricula.fork_file(Curricula.new(file.attributes.merge(:owner_id => self.id), new_parent))
+      ::Curriculum.fork_file(self.new(file.attributes.merge(:owner_id => id), new_parent))
     end
   end
 

@@ -36,12 +36,13 @@ class Sfile < ActiveRecord::Base
   validates :type, :presence => true, :inclusion => { :in => types }
 
   def self.fork_file(file, new_parent)
+    file  = file.is_a?(Hash) ? Sfile.new(file) : file
     clone = file.attributes
 
     clone["source_id"] = clone["id"]
     clone.delete("id")
 
-    if new_parent.respond_to?(:id)
+    if !new_parent.nil? && new_parent.respond_to?(:id)
       clone["parent_id"] = new_parent.id
     else
       clone["parent_id"] = new_parent.to_i

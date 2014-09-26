@@ -20,7 +20,7 @@ module Api
 
     def create
       if source_id != nil
-        @curriculum = current_user.curricula.fork_file(Curriculum.find(source_id), parent_id)
+        @curriculum = Curriculum.fork_file(forkable_attributes, nil)
       else
         @curriculum = current_user.curricula.new(curriculum_params)
       end
@@ -71,6 +71,13 @@ module Api
 
     def parent_id
       params[:curriculum][:parent_id] unless params[:curriculum].nil?
+    end
+
+    def forkable_attributes
+      forkable = Curriculum.find(source_id)
+      if forkable.respond_to?(:attributes)
+        return forkable.attributes.merge(:owner_id => current_user.id)
+      end
     end
   end
 end
