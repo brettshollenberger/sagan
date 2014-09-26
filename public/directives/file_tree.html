@@ -8,12 +8,17 @@
     </div>
   </div>
 
-  <div ng-hide="source.course_materials.empty()" 
-       ng-repeat="childNode in source.course_materials">
-    <div file-in-tree="childNode" ng-click="appendSource(childNode)"></div>
-  </div>
-
   <div ng-show="source.course_materials.empty()">
     <div file-viewer="source"></div>
   </div>
+
+  <div ng-hide="source.course_materials.empty()" class="file-viewer">
+    <div class="file-header">
+      {{source.name}}
+    </div>
+    <div ng-repeat="childNode in source.course_materials" file-in-tree="childNode" ng-click="appendSource(childNode)"></div>
+    <div class="file-footer"></div>
+  </div>
+
+  
 </div>

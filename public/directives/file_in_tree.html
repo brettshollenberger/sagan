@@ -1,8 +1,10 @@
-<div ng-show="file.filetype == 'directory'">
-  <h6>{{file.name}}</h6>
+<div  ng-show="file.filetype == 'directory'" class="file-item file-directory">
+	<img src="" alt="">
+	<span class="left">{{file.name}}</span>
+	<span class="right">Derp</span>
 </div>
-
-<div ng-hide="file.filetype == 'directory'">
-  <p>{{file.name}}</p>
+<div ng-hide="file.filetype == 'directory'" class="file-item file-single">
+	<img src="" alt="">
+	<span class="left">{{file.name}}</span>
+	<span class="right">Derp</span>
 </div>
-
