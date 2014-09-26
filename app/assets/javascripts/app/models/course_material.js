@@ -26,6 +26,13 @@
       this.string('content');
     }
 
+    CourseMaterial.prototype.parentNode = function() {
+      if (!_.isUndefined(this.course_material)) {
+        return this.course_material;
+      }
+      return this.curriculum;
+    }
+
     CourseMaterial.validates({
       name:           { required: true },
       filetype:       { required: true, 
