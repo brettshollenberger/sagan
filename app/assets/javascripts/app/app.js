@@ -15,8 +15,9 @@ angular
         controller: 'AppCtrl'
       })
 
-      .when('/test', {
-        templateUrl: 'views/file-view.html'
+      .when('/files/:id/course_materials/new', {
+        templateUrl: 'views/course_materials/new.html',
+        controller: 'CourseMaterialsNewCtrl'
       })
 
       .otherwise({

@@ -62,7 +62,7 @@ module Api
 
     def course_material_params
       params.require(:course_material)
-            .permit(:name, :filetype, :type, :classification, :parent_id, :owner_id, :source_id)
+            .permit(:name, :filetype, :type, :classification, :parent_id, :owner_id, :source_id, :content)
     end
 
     def source_id
