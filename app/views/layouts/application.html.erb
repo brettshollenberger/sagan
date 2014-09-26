@@ -18,9 +18,9 @@
       </div>
     </div>
     <div class="content-navigation">
-      <div ng-hide="currentContent.course_materials.empty()">
-        <div 
-          style="display:inline; color:white;" 
+      <div>
+        <div
+          style="display:inline; color:white;"
           ng-click="setContent(currentContent.parentNode())"
           ng-show="currentContent.parentNode()">
           ^ up
@@ -28,26 +28,9 @@
         <h6>{{currentContent.name || "My Courses"}}</h6>
       </div>
 
-      <div ng-show="currentContent.course_materials.empty()">
-        <div 
-          style="display:inline; color:white;" 
-          ng-click="setContent(currentContent.parentNode().parentNode())"
-          ng-show="currentContent.parentNode()">
-          ^ up
-        </div>
-        <h6>{{currentContent.parentNode().name || "My Courses"}}</h6>
-      </div>
-
-      <div ng-hide="currentContent.course_materials.empty()">
+      <div>
         <p ng-repeat="course_material in currentContent.course_materials" 
         ng-click="setContent(course_material)">
-          {{course_material.name}}
-        </p>
-      </div>
-
-      <div ng-show="currentContent.course_materials.empty()">
-        <p ng-repeat="course_material in currentContent.parentNode().course_materials"
-           ng-click="setContent(course_material); navigateTo(course_material)">
           {{course_material.name}}
         </p>
       </div>
