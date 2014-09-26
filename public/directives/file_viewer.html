@@ -1,1 +1,3 @@
-<p>{{file.content}}</p>
+<button ng-click="file.$save()" ng-show="file.dirty('content')">Save</button>
+
+<textarea ng-model="file.content">{{file.content}}</textarea>
