@@ -1,30 +1,10 @@
+<div  ng-show="!currentRoot.course_materials.empty()">
 
-  <h1>{{curriculum.name}}</h1>
-
-  <div ng-show="!curriculum.forks.empty()">
-    <h4>Forks:</h4>
-    <div ng-repeat="fork in curriculum.forks">
-      {{fork.name}}
+  <div class="course-material" ng-repeat="file in currentRoot.course_materials">
+    <div class="fork-material">
+      <div class="icon"></div>
     </div>
+    <h3 ng-click="setParent(file.id)">{{file.name}}</h3>
+    <p >{{file.content}}</p>
   </div>
-
-  <div ng-show="curriculum.source.name">
-    <h4>Forked From:</h4>
-    <p>{{curriculum.source.name}}</p>
-  </div>
-
-  <h4>Owner:</h4>
-  <p>{{curriculum.owner.full_name}}</p>
-
-  <div ng-show="!curriculum.course_materials.empty()">
-    <h4>Course Materials:</h4>
-    {{curriculum.course_materials.content}}
-    <div ng-repeat="file in curriculum.course_materials">
-      <p ng-click="file.course_materials.findAll()">{{file.name}}</p>
-      <div ng-repeat="f in file.course_materials">
-        <p>{{f.name}}</p>
-      </div>
-    </div>
-  </div>
-
-  <br><br>
+</div>

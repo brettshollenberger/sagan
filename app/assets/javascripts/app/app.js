@@ -19,7 +19,7 @@ angular
   .run(['ngActiveResource', function(ngActiveResource) {
 
     ngActiveResource.api.configure(function(config) {
-      config.baseURL = "http://localhost:3000/static/api";
+      config.baseURL = "http://localhost:3000/api";
     });
 
   }]);
