@@ -141,4 +141,22 @@ describe "Curricula API :", :type => :request do
       end
     end
   end
+
+  describe "Delete action :" do
+    describe "When logged in :" do
+      before(:each) do
+        login(user)
+
+        delete api_curriculum_path(@curriculum)
+      end
+
+      it "is a successful request" do
+        expect(response).to be_success
+      end
+
+      it "updates the curriculum" do
+        expect(json["status"]).to eq "204"
+      end
+    end
+  end
 end
