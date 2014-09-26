@@ -1,5 +1,5 @@
 angular
 .module('ngRails')
-.controller('SidebarCtrl', ['$scope', '$rootScope', 'Curriculum', 'User', 'CourseMaterial',
-    function($scope, $rootScope, Curriculum, User, CourseMaterial) {
+.controller('SidebarCtrl', ['$scope', '$routeParams', 'Curriculum', 'User', 'CourseMaterial',
+    function($scope, $routeParams, Curriculum, User, CourseMaterial) {
     }]);
