@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   namespace :api, :defaults => {:format => :json} do
     resources :curricula
     resources :course_materials
+    resources :users
   end
 
   devise_for :users
