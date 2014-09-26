@@ -123,5 +123,22 @@ describe "Curricula API :", :type => :request do
   end
 
   describe "Update action :" do
+    describe "When logged in :" do
+      describe "Normal update" do
+        before(:each) do
+          login(user)
+
+          put api_curriculum_path(@curriculum), valid_curriculum_json
+        end
+
+        it "is a successful request" do
+          expect(response).to be_success
+        end
+
+        it "updates the curriculum" do
+          expect(json["name"]).to eq "The Best Curriculum"
+        end
+      end
+    end
   end
 end
