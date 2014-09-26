@@ -5,7 +5,6 @@ module Static
                                    :parent_id, :url, :content)
 
       def index
-        binding.pry
         @course_materials = database.map    { |c| CourseMaterials.new(*c) }
                                     .select { |c| c.parent_id == params[:parent_id].to_i }
       end
