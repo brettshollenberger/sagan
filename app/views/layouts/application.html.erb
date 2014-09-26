@@ -19,6 +19,10 @@
     </div>
     <div class="content-navigation">
       <div>
+        <%# <div ng-repeat="curriculum in curricula"> %>
+
+        <%# </div> %>
+
         <div
           style="display:inline; color:white;"
           ng-click="setContent(currentContent.parentNode())"
@@ -29,8 +33,8 @@
       </div>
 
       <div>
-        <p ng-repeat="course_material in currentContent.course_materials" 
-        ng-click="setContent(course_material)">
+        <p ng-repeat="course_material in currentContent.course_materials | directories"
+           ng-click="setContent(course_material)">
           {{course_material.name}}
         </p>
       </div>
