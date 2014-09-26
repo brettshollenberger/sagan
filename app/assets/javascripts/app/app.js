@@ -10,6 +10,10 @@ angular
         controller: 'AppCtrl'
       })
 
+      .when('/test', {
+        templateUrl: 'views/file-view.html'
+      })
+
       .otherwise({
         redirectTo: '/'
       });
