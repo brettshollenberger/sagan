@@ -1,0 +1,14 @@
+<div>
+  <div class="history-bar">
+    <div class="breadcrumb" ng-repeat="crumb in breadcrumbs">
+      <h6 class="breadcrumb" ng-click="navigateTo(crumb)">
+        {{crumb.name}}
+        <div class="breadcrumb" ng-hide="$last"> > </div>
+      </h6>
+    </div>
+  </div>
+  {{source.name}}
+  <div ng-repeat="childNode in source.course_materials">
+    <div ng-click="appendSource(childNode)">{{childNode.name}}</div>
+  </div>
+</div>

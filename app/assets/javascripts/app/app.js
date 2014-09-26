@@ -6,7 +6,12 @@ angular
     $routeProvider
 
       .when('/', {
-        templateUrl: 'views/curriculum/index.html',
+        templateUrl: 'views/discover.html',
+        controller: 'AppCtrl'
+      })
+
+      .when('/curricula/:id', {
+        templateUrl: 'views/curricula/index.html',
         controller: 'AppCtrl'
       })
 
