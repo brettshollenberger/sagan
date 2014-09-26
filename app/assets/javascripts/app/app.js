@@ -1,5 +1,5 @@
 angular
-  .module('ngRails', ['ng', 'ngRoute', 'ngActiveResource'])
+  .module('ngRails', ['ng', 'ngRoute', 'ngActiveResource', 'ngAnimate'])
 
   .config(function ($routeProvider) {
 

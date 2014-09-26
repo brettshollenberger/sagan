@@ -18,6 +18,7 @@ angular
         $scope.setRoot = function(newRoot) {
           $rootScope.currentRoot = newRoot;
           $rootScope.breadcrumbs.$removeAll();
+          console.log($rootScope.currentRoot);
         }
 
         $scope.navigateTo = function(newContent) {

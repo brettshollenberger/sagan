@@ -1,11 +1,16 @@
 @import "constants";
 
 .course-material {
-	padding:30px;
-	background:#fff;
-	margin-bottom:30px;
-	max-width:600px;
-	position:relative;
+	transition:transform 0.125s ease-out;
+	transition:-webkit-transform 0.125s ease-out;
+	.material-content {
+		padding:30px;
+		background:#fff;
+		margin-bottom:30px;
+		position:relative;	
+		min-height:0px;
+		transition:min-height 0.125s ease-out;
+	}
 	.fork-material {
 		position:absolute;
 		z-index:100;
@@ -27,15 +32,28 @@
 	.fork-menu {
 		position:absolute;
 		top:0px;
-		right:-30px;
-		width:100%;
+		padding:30px;
+		transition:opacity 0.125s ease-out;
+		left:100%;
+		margin-left:30px;
+		width:calc(50% - 30px);
 		height:100%;
 		background:white;
 		opacity:0;
 	}
 	&.fork-visible {
+		
+		transform:translate(-50%, 0);
+		-webkit-transform:translate(-50%, 0);
+		.material-content {
+			min-height:300px;
+			opacity:0.5;
+		}
 		.fork-menu {
 			opacity:1;
+			h6 {
+				margin:0;
+			}
 		}
 	}
 }
@@ -48,5 +66,4 @@
 }
 
 .course-materials-list {
-	overflow:hidden;
 }

@@ -1,6 +1,6 @@
 <div ng-controller="CurriculaIndexCtrl">
   <div ng-hide="currentContent.course_materials.empty()" class="course-materials-list">
-    <div class="course-material" ng-repeat="file in currentContent.course_materials" course-material="file">
+    <div class="course-material" ng-class="{ 'course-material-directory': file.filetype == 'directory' }" ng-repeat="file in currentContent.course_materials" course-material="file">
       <div class="course-materials-placeholder" ng-show="currentCurriculum.course_materials.empty()">
         <h3>Please Select a course directory on the right </h3>
       </div>
