@@ -6,9 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+puts "Creating users"
 @user = User.create(:first_name => "Shalom", :last_name => "Aptekar", :email => "shalom@gmail.com", 
             :password => "foobar29")
 
+@user2 = User.create(:first_name => "Brett", :last_name => "Cassette", :email => "brett@gmail.com",
+                     :password => "foobar29")
+
+puts "Creating curricula"
 @curriculum = Curriculum.create(:name => "Javascript for Beginners",
                                 :owner_id => @user.id)
 
@@ -40,4 +45,21 @@
                                :owner_id => @user.id,
                                :content => "Question 2...")
 
-Curriculum.fork_file(@curriculum)
+@syllabus = CourseMaterial.create(:name => "Syllabus",
+                                   :parent_id => @curriculum.id,
+                                   :owner_id => @user.id)
+
+@fork = Curriculum.fork_file(@curriculum)
+
+@fork.name = "Fork of Javascript for Beginners"
+@fork.save
+
+@reading3 = CourseMaterial.create(:name => "Effective Javascript",
+                                  :parent_node => @fork,
+                                  :owner_id => @user.id,
+                                  :content => "It's the Javacrips vs the Javabloods")
+
+@reading3 = CourseMaterial.create(:name => "Effective Javascript",
+                                  :parent_node => @fork,
+                                  :owner_id => @user.id,
+                                  :content => "It's the Javacrips vs the Javabloods")
