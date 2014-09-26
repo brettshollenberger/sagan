@@ -7,8 +7,8 @@ angular.module('ngRails').factory('AppService', function() {
         getCurriculum: function () {
             return data.curriculum;
         },
-        setCurriculum: function (firstName) {
-            data.curriculum = firstName;
+        setCurriculum: function (newCurriculum) {
+            data.curriculum = newCurriculum;
         }
     };
 });

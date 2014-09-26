@@ -4,8 +4,8 @@ angular
   function($scope, Curriculum, User, CourseMaterial, AppService) {
 
     var updateCurriculum = function() {
-      $scope.curriculum = Curriculum.find($scope.currentCurriculum).then(function() {
-          $scope.curriculum.course_materials.findAll();
+      $scope.currentRoot = Curriculum.find($scope.currentCurriculum).then(function() {
+          $scope.currentRoot.course_materials.findAll();
       });
     }
 
@@ -17,5 +17,14 @@ angular
           updateCurriculum();
         }
     });
+
+    $scope.setParent = function(id) {
+
+      $scope.currentRoot = CourseMaterial.find(id).then(function() {
+        $scope.currentRoot.course_materials.findAll();  
+        console.log(id);
+      });
+      
+    }
 
   }]);

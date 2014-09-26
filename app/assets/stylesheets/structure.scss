@@ -54,10 +54,11 @@ html, body {
 	}
 	.history-bar {
 		border-bottom:1px solid $mediumGray;
+		margin-bottom:30px;
 		h6 {
 			display:inline-block;
 			line-height:60px;
-			margin:0px;
+			margin:0px;	
 		}
 	}
 }
