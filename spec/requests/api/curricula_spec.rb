@@ -2,8 +2,9 @@ require "rails_helper"
 
 describe "Curricula API :", :type => :request do
   before(:all) do
-    @curriculum = curriculum_for_user(user)
-    @curriculum2 = curriculum_for_user(user2)
+    @curriculum        = curriculum_for_user(user)
+    @curriculum2       = curriculum_for_user(user2)
+    @forked_curriculum = Curriculum.fork_file(@curriculum)
   end
 
   def valid_curriculum_json
@@ -53,27 +54,23 @@ describe "Curricula API :", :type => :request do
     end
 
     describe "Curricula from source" do
-      # before(:each) do
-      #   login(user)
+      before(:each) do
+        login(user)
 
-      #   get "#{api_curricula_path}?source_id=#{@curriculum.id}"
-      # end
+        get "#{api_curricula_path}?source_id=#{@curriculum.id}"
+      end
 
-      # it "is a successful request" do
-      #   expect(response).to be_success
-      # end
+      it "is a successful request" do
+        expect(response).to be_success
+      end
 
-      # it "contains " do
-      # end
+      it "contains the forked curricula" do
+        expect(json.first["id"]).to eq @forked_curriculum.id
+      end
 
-      # it "contains the user's curricula" do
-      #   expect(json.first["id"]).to eq @curriculum.id
-      # end
-
-      # it "does not contain another user's curriculum", :focus do
-      #   expect(json.count { |curric| curric["id"] == @curriculum.id }).to eq 1
-      #   expect(json.count { |curric| curric["id"] == @curriculum2.id }).to eq 0
-      # end
+      it "has no parent" do
+        expect(json.first["parent_id"]).to be_nil
+      end
     end
   end
 
@@ -123,5 +120,8 @@ describe "Curricula API :", :type => :request do
         end
       end
     end
+  end
+
+  describe "Update action :" do
   end
 end

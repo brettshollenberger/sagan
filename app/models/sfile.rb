@@ -35,7 +35,7 @@ class Sfile < ActiveRecord::Base
 
   validates :type, :presence => true, :inclusion => { :in => types }
 
-  def self.fork_file(file, new_parent)
+  def self.fork_file(file, new_parent=nil)
     file  = file.is_a?(Hash) ? Sfile.new(file) : file
     clone = file.attributes
 
