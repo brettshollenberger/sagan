@@ -18,29 +18,29 @@ module Api
       end
     end
 
-    # def create
-    #   if params[:source_id] != nil
-    #     @curriculum = Curriculum.fork_from(Curriculum.find(params[:id]), params[:source_id])
-    #   else
-    #     @curriculum = Curriculum.new(curriculum_params)
-    #   end
+    def create
+      if source_id != nil
+        @course_material = CourseMaterial.fork_file(CourseMaterial.find(source_id), parent_id)
+      else
+        @course_material = current_user.course_materials.new(course_material_params)
+      end
 
-    #   if @curriculum.save
-    #     render :show
-    #   else
-    #     render unprocessable_entity(@curriculum)
-    #   end
-    # end
+      if @course_material.save
+        render :show
+      else
+        render unprocessable_entity(@course_material)
+      end
+    end
 
-    # def update
-    #   @curriculum = Curriculum.find(params[:id])
+    def update
+      @course_material = current_user.course_materials.find(params[:id])
 
-    #   if @curriculum.update(curriculum_params)
-    #     render :show
-    #   else
-    #     render unprocessable_entity(@curriculum)
-    #   end
-    # end
+      if @course_material.update(course_material_params)
+        render :show
+      else
+        render unprocessable_entity(@course_material)
+      end
+    end
 
     # def destroy
     #   @curriculum = current_user.curricula.find(params[:id])
@@ -60,9 +60,17 @@ module Api
       end
     end
 
-    def curriculum_params
-      params.require(:curriculum)
+    def course_material_params
+      params.require(:course_material)
             .permit(:name, :filetype, :type, :classification, :parent_id, :owner_id, :source_id)
+    end
+
+    def source_id
+      params[:curriculum][:source_id] unless params[:curriculum].nil?
+    end
+
+    def parent_id
+      params[:curriculum][:parent_id] unless params[:curriculum].nil?
     end
   end
 end

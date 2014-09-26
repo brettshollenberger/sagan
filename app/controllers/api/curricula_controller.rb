@@ -20,9 +20,9 @@ module Api
 
     def create
       if source_id != nil
-        @curriculum = Curriculum.fork_file(Curriculum.find(source_id), parent_id)
+        @curriculum = current_user.curricula.fork_file(Curriculum.find(source_id), parent_id)
       else
-        @curriculum = Curriculum.new(curriculum_params)
+        @curriculum = current_user.curricula.new(curriculum_params)
       end
 
       if @curriculum.save
@@ -33,7 +33,7 @@ module Api
     end
 
     def update
-      @curriculum = Curriculum.find(params[:id])
+      @curriculum = current_user.curricula.find(params[:id])
 
       if @curriculum.update(curriculum_params)
         render :show

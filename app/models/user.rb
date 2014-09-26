@@ -9,6 +9,13 @@ class User < ActiveRecord::Base
     foreign_key: :owner_id
 
   has_many :curricula,
-    foreign_key: :owner_id
+    foreign_key: :owner_id do
 
+    def fork_file(file, new_parent)
+      Curricula.fork_file(Curricula.new(file.attributes.merge(:owner_id => self.id), new_parent))
+    end
+  end
+
+  has_many :course_materials,
+    foreign_key: :owner_id
 end
