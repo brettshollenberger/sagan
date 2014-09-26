@@ -1,3 +1,5 @@
+ 
+<h5 class="content-title">My Courses</h5>
  <div ng-repeat="curriculum in curricula">
-   <a href="#curricula/{{curriculum.id}}">{{curriculum.name}}</div>
+   <a  href="#curricula/{{curriculum.id}}" ng-class="{ 'selected': currentCurriculum.id == curriculum.id }">{{curriculum.name}}</a></div>
  </div>
