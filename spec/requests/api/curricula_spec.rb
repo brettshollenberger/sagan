@@ -46,7 +46,7 @@ describe "Curricula API :", :type => :request do
           expect(json.first["id"]).to eq @curriculum.id
         end
 
-        it "does not contain another user's curriculum", :focus do
+        it "does not contain another user's curriculum" do
           expect(json.count { |curric| curric["id"] == @curriculum.id }).to eq 1
           expect(json.count { |curric| curric["id"] == @curriculum2.id }).to eq 0
         end
