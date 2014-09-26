@@ -19,10 +19,19 @@
     </div>
     <div class="content-navigation">
       <h6>{{currentContent.name || "My Courses"}}</h6>
-      <p ng-repeat="course_material in currentRoot.course_materials | filter:'directory'" 
-      ng-click="setRoot(curriculum); setContent(curriculum)">
-      {{course_material.name}}
-      </p>
+      <div ng-hide="currentContent.course_materials.empty()">
+        <p ng-repeat="course_material in currentContent.course_materials" 
+        ng-click="setRoot(course_material); setContent(course_material)">
+          {{course_material.name}}
+        </p>
+      </div>
+
+      <div ng-show="currentContent.course_materials.empty()">
+        <p ng-repeat="course_material in currentContent.course_material.course_materials"
+           ng-click="setRoot(course_material); setContent(course_material)">
+          {{course_material.name}}
+        </p>
+      </div>
     </div>
   </div>
   <div class="right-content">
