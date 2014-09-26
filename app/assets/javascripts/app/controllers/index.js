@@ -11,25 +11,33 @@ angular
         $rootScope.breadcrumbs = mixin([$rootScope.currentRoot], FunctionalCollection);
 
         $scope.setContent = function(newContent) {
+          var oldContent = $rootScope.currentContent;
           $rootScope.currentContent = newContent;
-          $rootScope.breadcrumbs.push(newContent);
-        }
 
-        $scope.setRoot = function(newRoot) {
-          $rootScope.currentRoot = newRoot;
-          $rootScope.breadcrumbs.$removeAll();
+          if (_.include(oldContent.course_materials, newContent)) {
+            $rootScope.breadcrumbs.push(newContent);
+          } else {
+            $scope.navigateTo(newContent);
+          }
         }
 
         $scope.navigateTo = function(newContent) {
           var navigateToIndex = _.findIndex($rootScope.breadcrumbs, newContent);
 
-          for (var i = navigateToIndex; i < $rootScope.breadcrumbs.length; i++) {
-            $rootScope.breadcrumbs[i] = undefined;
+          // If not navigating back to a particular index, navigate up one
+          if (navigateToIndex == -1) {
+            $rootScope.breadcrumbs.pop();
+          } else {
+          // Navigate back to a particular index
+            for (var i = navigateToIndex; i < $rootScope.breadcrumbs.length; i++) {
+              $rootScope.breadcrumbs[i] = undefined;
+            }
+
+            $rootScope.breadcrumbs.$compact();
           }
 
-          $rootScope.breadcrumbs.$compact();
-
-          $scope.setContent(newContent);
+          $rootScope.currentContent = newContent;
+          $rootScope.breadcrumbs.push(newContent);
         }
       });
     });
