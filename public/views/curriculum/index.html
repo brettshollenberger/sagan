@@ -1,6 +1,6 @@
-<div  ng-show="!$root.currentCurriculum.course_materials.empty()">
-
-  <div class="course-material" ng-repeat="file in $root.currentCurriculum.course_materials">
-    <div course-material="file"></div>
-  </div>
+<div ng-show="!$root.currentCurriculum.course_materials.empty()" class="course-materials-list">
+    <div class="course-material" ng-repeat="file in $root.currentCurriculum.course_materials" course-material="file"></div>
+</div>
+<div class="course-materials-placeholder" ng-show="$root.currentCurriculum.course_materials.empty()">
+  <h3>Please Select a course directory on the right </h3>
 </div>

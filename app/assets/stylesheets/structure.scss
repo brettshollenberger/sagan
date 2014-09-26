@@ -21,7 +21,6 @@ html, body {
 	}
 	.page-title {
 		padding:30px;
-
 	}
 	
 }
@@ -31,6 +30,13 @@ html, body {
 	p {
 		color:$mediumGray;
 		text-transform:uppercase;
+		padding-left:15px;
+		border-left:5px solid rgba(0,0,0,0.2);
+		padding:0 0 7px 15px;
+		margin-bottom:0px;
+		&.selected {
+			border-left-color:$blue;
+		}
 	}
 	h6 {
 		font-size:0.8rem;
