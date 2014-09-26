@@ -29,11 +29,13 @@ html, body {
 .content-navigation {
 	padding:30px;
 	p {
-		color:white;
-	}
-	h6 {
 		color:$mediumGray;
 		text-transform:uppercase;
+	}
+	h6 {
+		font-size:0.8rem;
+		color:$mediumGray;
+		
 	}
 }
 

@@ -12,14 +12,14 @@
 	<div class="row content-container">
 		<div class="left-content" ng-controller="SidebarCtrl">
 			<div class="info-content">
-				<h1 class="sagan-title">Sagan</h1>
+				<h3 class="sagan-title">Sagan</h3>
 				<div class="page-title">
 					
 				</div>
 			</div>
 			<div class="content-navigation">
-				<h6>MY COURSES</h6>
-				<p ng-repeat="curriculum in curricula" ng-click="setCurriculum(curriculum.id)">{{curriculum.name}}</p>
+				<h6>My Courses</h6>
+				<p ng-repeat="curriculum in curricula" ng-click="setRootItem(curriculum)">{{curriculum.name}}</p>
 
 			</div>
 			

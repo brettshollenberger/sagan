@@ -1,10 +1,6 @@
-<div  ng-show="!currentRoot.course_materials.empty()">
+<div  ng-show="!$root.currentCurriculum.course_materials.empty()">
 
-  <div class="course-material" ng-repeat="file in currentRoot.course_materials">
-    <div class="fork-material">
-      <div class="icon"></div>
-    </div>
-    <h3 ng-click="setParent(file.id)">{{file.name}}</h3>
-    <p >{{file.content}}</p>
+  <div class="course-material" ng-repeat="file in $root.currentCurriculum.course_materials">
+    <div course-material="file"></div>
   </div>
 </div>
