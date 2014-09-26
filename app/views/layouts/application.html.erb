@@ -18,13 +18,12 @@
       </div>
     </div>
     <div class="content-navigation">
-      <h6>My Courses</h6>
-      <p ng-repeat="curriculum in curricula" ng-click="setRoot(curriculum); setContent(curriculum)">
-        {{curriculum.name}}
+      <h6>{{currentContent.name || "My Courses"}}</h6>
+      <p ng-repeat="course_material in currentRoot.course_materials | filter:'directory'" 
+      ng-click="setRoot(curriculum); setContent(curriculum)">
+      {{course_material.name}}
       </p>
-
     </div>
-
   </div>
   <div class="right-content">
     <p class="notice hide"><%= notice %></p>
