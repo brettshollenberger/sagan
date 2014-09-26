@@ -26,6 +26,8 @@ angular
 
     function Curriculum() {
       this.string('name');
+      this.string('filetype');
+      this.string('classification');
     }
 
     Curriculum.validates({

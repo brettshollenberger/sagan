@@ -18,17 +18,19 @@
       </div>
     </div>
     <div class="content-navigation">
-      <h6>{{currentContent.name || "My Courses"}}</h6>
-      <div ng-hide="currentContent.course_materials.empty()">
-        <p ng-repeat="course_material in currentContent.course_materials" 
-        ng-click="setRoot(course_material); setContent(course_material)">
-          {{course_material.name}}
-        </p>
+      <div>
+        <div
+          style="display:inline; color:white;"
+          ng-click="setContent(currentContent.parentNode())"
+          ng-show="currentContent.parentNode()">
+          ^ up
+        </div>
+        <h6>{{currentContent.name || "My Courses"}}</h6>
       </div>
 
-      <div ng-show="currentContent.course_materials.empty()">
-        <p ng-repeat="course_material in currentContent.course_material.course_materials"
-           ng-click="setRoot(course_material); setContent(course_material)">
+      <div>
+        <p ng-repeat="course_material in currentContent.course_materials" 
+        ng-click="setContent(course_material)">
           {{course_material.name}}
         </p>
       </div>

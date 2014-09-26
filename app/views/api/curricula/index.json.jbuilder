@@ -1,1 +1,1 @@
-json.array! @curricula, :id, :name, :source_id, :owner_id, :content
+json.array! @curricula, :id, :name, :source_id, :owner_id, :content, :filetype, :classification
