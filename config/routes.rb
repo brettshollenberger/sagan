@@ -9,6 +9,12 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api, :defaults => {:format => :json} do
+    resources :curricula
+    resources :course_materials
+    resources :users
+  end
+
   devise_for :users
   devise_scope :user do
     get "login", to: "devise/sessions#new"

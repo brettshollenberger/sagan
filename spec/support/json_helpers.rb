@@ -1,7 +1,13 @@
+include Warden::Test::Helpers
+
 module Requests
   module JsonHelpers
     def user
-      @user ||= FactoryGirl.create(:user, id: 1)
+      @user ||= FactoryGirl.create(:user)
+    end
+
+    def user2
+      @user2 ||= FactoryGirl.create(:user)
     end
 
     def login(user)
