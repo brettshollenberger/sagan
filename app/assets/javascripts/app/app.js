@@ -7,7 +7,7 @@ angular
 
       .when('/', {
         templateUrl: 'views/curriculum/index.html',
-        controller: 'CurriculaIndexCtrl'
+        controller: 'AppCtrl'
       })
 
       .otherwise({

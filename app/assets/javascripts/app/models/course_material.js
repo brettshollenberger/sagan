@@ -23,6 +23,7 @@
       this.string('filetype');
       this.string('classification');
       this.string('url');
+      this.string('content');
     }
 
     CourseMaterial.validates({
