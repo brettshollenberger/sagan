@@ -11,8 +11,13 @@ angular
       })
 
       .when('/curricula/:id', {
-        templateUrl: 'views/curricula/index.html',
-        controller: 'AppCtrl'
+        templateUrl: 'views/curricula/show.html',
+        controller: 'CurriculaShowCtrl'
+      })
+
+      .when('/course_materials/:id', {
+        templateUrl: 'views/course_materials/show.html',
+        controller: 'CourseMaterialsShowCtrl'
       })
 
       .when('/files/:id/course_materials/new', {

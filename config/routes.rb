@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :curricula
     resources :course_materials
     resources :users
+
+    get "sfiles/:id/ancestors" => "sfiles#ancestors"
   end
 
   devise_for :users
