@@ -1,7 +1,9 @@
 angular
 	.module('ngRails')
-	.directive('CourseMaterial', function() {
+	.directive('courseMaterial', function() {
 		return {
-			templateUrl: 'views/directives/course_material.html'
+			restrict: "AE",
+			scope: "=",
+			templateUrl: 'directives/course_material.html'
 		}
 	});
